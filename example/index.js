@@ -1,8 +1,8 @@
+import L from 'leaflet';
 import React from 'react';
 import { render } from 'react-dom';
-import { Map, TileLayer, Marker, Popup } from 'react-leaflet';
+import { Map, Marker, Popup, TileLayer } from 'react-leaflet';
 import CanvasMarkersLayer from '../src/CanvasMarkersLayer';
-import L from 'leaflet';
 import markerIcon from './img/marker-icon.png';
 
 const defaultIcon = L.icon({
@@ -17,9 +17,9 @@ class MapExample extends React.Component {
     this.props.onMarkerClick && this.props.onMarkerClick(e, marker);
   }
   renderMarkers(){
-    const dataLength = 10000;
+    const dataLength = 500;
     const data = Array(...Array(dataLength)).map((_,i)=>(
-      {pos:[22.5774626732038 + Math.random() - 0.5, 114.04924392700197+ Math.random() - 0.5],num:i}
+      {pos:[22.5774626732038 + ( Math.random()*5 ) - 0.5, 114.04924392700197+ (Math.random()*5) - 0.5],num:i}
     ));
     return data.map((item) => {
       return (<Marker key={item.num} position={item.pos} icon={defaultIcon} properties={item}>
